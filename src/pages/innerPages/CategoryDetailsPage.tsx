@@ -14,7 +14,12 @@ const CategoryDetailsPage = () => {
     // Filter projects by category
     const filteredProjects = useMemo(() => {
         if (!category) return [];
-        return PortfolioV4Data.filter(item => item.tag === decodeURIComponent(category));
+        const decodedCategory = decodeURIComponent(category);
+        console.log('Filtering for category:', decodedCategory); // Debug log
+        return PortfolioV4Data.filter(item => {
+            console.log('Comparing:', item.tag, '===', decodedCategory, '=', item.tag === decodedCategory);
+            return item.tag === decodedCategory;
+        });
     }, [category]);
 
     return (
@@ -24,7 +29,7 @@ const CategoryDetailsPage = () => {
             </Helmet>
 
             <LayoutV1>
-                <Breadcrumb title={`${category} Projects`} breadCrumb={category || 'projects'} />
+                <Breadcrumb title={`${decodeURIComponent(category || '')} Projects`} breadCrumb={category || 'projects'} />
                 
                 <div className="portfolio-grid-area default-padding">
                     <div className="container">
@@ -38,7 +43,7 @@ const CategoryDetailsPage = () => {
                             ) : (
                                 <div className="col-12">
                                     <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>
-                                        No projects found in this category.
+                                        No projects found in this category. (Filtered for: {decodeURIComponent(category || '')})
                                     </p>
                                 </div>
                             )}
