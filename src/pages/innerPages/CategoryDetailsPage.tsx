@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useMemo } from "react";
+import { useMemo, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import DarkClass from "../../components/classes/DarkClass";
@@ -8,18 +8,39 @@ import PortfolioV4Data from "../../assets/jsonData/portfolio/PortfolioV4Data.jso
 import SinglePortfolioV4NoLink from "../../components/portfolio/SinglePortfolioV4NoLink";
 import ThemeDark from "../../components/switcher/ThemeDark";
 
-const CategoryDetailsPage = () => {
-    const { category } = useParams<{ category: string }>();
+interface PortfolioItem {
+    id: number;
+    thumb: string;
+    title: string;
+    tag: string;
+    thumbFull?: string;
+}
 
-    // Filter projects by category
-    const filteredProjects = useMemo(() => {
-        if (!category) return [];
+const CategoryDetailsPage = () => {
+    const { category } = useParams();
+    const [filteredProjects, setFilteredProjects] = useState<PortfolioItem[]>([]);
+
+    useEffect(() => {
+        if (!category) {
+            setFilteredProjects([]);
+            return;
+        }
+
         const decodedCategory = decodeURIComponent(category);
-        console.log('Filtering for category:', decodedCategory); // Debug log
-        return PortfolioV4Data.filter(item => {
-            console.log('Comparing:', item.tag, '===', decodedCategory, '=', item.tag === decodedCategory);
-            return item.tag === decodedCategory;
+        console.log('Category from URL:', category);
+        console.log('Decoded category:', decodedCategory);
+        console.log('Available tags in data:', Array.from(new Set((PortfolioV4Data as PortfolioItem[]).map(item => item.tag))));
+
+        const filtered = (PortfolioV4Data as PortfolioItem[]).filter(item => {
+            const matches = item.tag === decodedCategory;
+            if (!matches) {
+                console.log(`"${item.tag}" !== "${decodedCategory}"`);
+            }
+            return matches;
         });
+
+        console.log('Filtered results:', filtered);
+        setFilteredProjects(filtered);
     }, [category]);
 
     return (
@@ -29,7 +50,10 @@ const CategoryDetailsPage = () => {
             </Helmet>
 
             <LayoutV1>
-                <Breadcrumb title={`${decodeURIComponent(category || '')} Projects`} breadCrumb={category || 'projects'} />
+                <Breadcrumb 
+                    title={`${decodeURIComponent(category || '')} Projects`} 
+                    breadCrumb={category || 'projects'} 
+                />
                 
                 <div className="portfolio-grid-area default-padding">
                     <div className="container">
@@ -43,7 +67,9 @@ const CategoryDetailsPage = () => {
                             ) : (
                                 <div className="col-12">
                                     <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>
-                                        No projects found in this category. (Filtered for: {decodeURIComponent(category || '')})
+                                        No projects found in category: <strong>{decodeURIComponent(category || '')}</strong>
+                                        <br />
+                                        <small>Check console for debugging info</small>
                                     </p>
                                 </div>
                             )}
