@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useMemo, useEffect, useState } from "react";
+import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import DarkClass from "../../components/classes/DarkClass";
-import LayoutV1 from "../../components/layouts/LayoutV1";
+import HeaderV5 from "../../components/header/HeaderV5";
 import PortfolioV4Data from "../../assets/jsonData/portfolio/PortfolioV4Data.json";
 import SinglePortfolioV4NoLink from "../../components/portfolio/SinglePortfolioV4NoLink";
 import ThemeDark from "../../components/switcher/ThemeDark";
@@ -17,69 +17,60 @@ interface PortfolioItem {
 }
 
 const CategoryDetailsPage = () => {
-    const { category } = useParams();
-    const [filteredProjects, setFilteredProjects] = useState<PortfolioItem[]>([]);
+    const { category } = useParams<{ category: string }>();
 
-    useEffect(() => {
-        if (!category) {
-            setFilteredProjects([]);
-            return;
-        }
-
+    // Filter projects by category
+    const filteredProjects = useMemo(() => {
+        if (!category) return [];
         const decodedCategory = decodeURIComponent(category);
-        console.log('Category from URL:', category);
-        console.log('Decoded category:', decodedCategory);
-        console.log('Available tags in data:', Array.from(new Set((PortfolioV4Data as PortfolioItem[]).map(item => item.tag))));
-
-        const filtered = (PortfolioV4Data as PortfolioItem[]).filter(item => {
-            const matches = item.tag === decodedCategory;
-            if (!matches) {
-                console.log(`"${item.tag}" !== "${decodedCategory}"`);
-            }
-            return matches;
-        });
-
-        console.log('Filtered results:', filtered);
-        setFilteredProjects(filtered);
+        return (PortfolioV4Data as PortfolioItem[]).filter(item => item.tag === decodedCategory);
     }, [category]);
+
+    const categoryTitle = category ? decodeURIComponent(category) : '';
 
     return (
         <>
             <Helmet>
-                <title>Dixor - {category}</title>
+                <title>Dixor - {categoryTitle} Projects</title>
             </Helmet>
 
-            <LayoutV1>
-                <Breadcrumb 
-                    title={`${decodeURIComponent(category || '')} Projects`} 
-                    breadCrumb={category || 'projects'} 
-                />
-                
-                <div className="portfolio-grid-area default-padding">
-                    <div className="container">
-                        <div className="row">
-                            {filteredProjects.length > 0 ? (
-                                filteredProjects.map(project => (
-                                    <div key={project.id} className="col-lg-4 col-md-6 col-sm-12">
-                                        <SinglePortfolioV4NoLink portfolio={project} />
-                                    </div>
-                                ))
-                            ) : (
-                                <div className="col-12">
-                                    <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>
-                                        No projects found in category: <strong>{decodeURIComponent(category || '')}</strong>
-                                        <br />
-                                        <small>Check console for debugging info</small>
-                                    </p>
-                                </div>
-                            )}
+            <HeaderV5 />
+            <Breadcrumb 
+                title={`${categoryTitle} Projects`} 
+                breadCrumb={`Portfolio / ${categoryTitle}`} 
+            />
+            
+            <div className="portfolio-grid-area default-padding">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-12">
+                            <div className="site-heading text-center" style={{ marginBottom: '50px' }}>
+                                <h2 className="title">{categoryTitle}</h2>
+                                <p>Explore our {categoryTitle.toLowerCase()} projects</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <DarkClass />
-                <ThemeDark />
-            </LayoutV1>
+                    <div className="row">
+                        {filteredProjects.length > 0 ? (
+                            filteredProjects.map(project => (
+                                <div key={project.id} className="col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: '40px' }}>
+                                    <SinglePortfolioV4NoLink portfolio={project} />
+                                </div>
+                            ))
+                        ) : (
+                            <div className="col-12">
+                                <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>
+                                    No projects found in the {categoryTitle} category.
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            <DarkClass />
+            <ThemeDark />
         </>
     );
 };
