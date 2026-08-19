@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "icon": "9.png",
+    "subTitle": "Editorial Excellence",
+    "title": "Editorial & Magazine Design",
+    "text": "Creating compelling magazines, newspapers and editorial publications that combine strong typography, visual hierarchy and storytelling to engage readers and communicate complex ideas with clarity.",
+    "number": "01"
+  },
+  {
+    "id": 2,
+    "icon": "10.png",
+    "subTitle": "Data Storytelling",
+    "title": "Infographics & Information Design",
+    "text": "Transforming financial, business and technical information into clear, engaging visual narratives through infographics, data visualization and strategic communication design.",
+    "number": "02"
+  },
+  {
+    "id": 3,
+    "icon": "11.png",
+    "subTitle": "Creative Production",
+    "title": "Motion Graphics & Video",
+    "text": "Producing motion graphics, explainer videos, social media campaigns and cinematic edits that turn ideas into engaging visual experiences across digital platforms.",
+    "number": "03"
+  }
+]
