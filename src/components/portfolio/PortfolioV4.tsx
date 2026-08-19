@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation, FreeMode } from 'swiper/modules';
 import PortfolioV4Data from '../../../src/assets/jsonData/portfolio/PortfolioV4Data.json';
-import SinglePortfolioV4 from './SinglePortfolioV4';
+import SinglePortfolioV4WithCategoryLink from './SinglePortfolioV4WithCategoryLink';
 import SplitText from "../animation/SplitText.jsx"
 
 interface DataType {
@@ -83,7 +83,7 @@ const PortfolioV4 = ({ sectionClass, hasTitle }: DataType) => {
                                     <div className="swiper-wrapper">
                                         {PortfolioV4Data.slice(0, 8).map(portfolio =>
                                             <SwiperSlide key={portfolio.id}>
-                                                <SinglePortfolioV4 portfolio={portfolio} />
+                                                <SinglePortfolioV4WithCategoryLink portfolio={portfolio} />
                                             </SwiperSlide>
                                         )}
                                     </div>
