@@ -5,7 +5,6 @@ import Breadcrumb from "../../components/breadcrumb/Breadcrumb";
 import DarkClass from "../../components/classes/DarkClass";
 import HeaderV5 from "../../components/header/HeaderV5";
 import PortfolioV4Data from "../../assets/jsonData/portfolio/PortfolioV4Data.json";
-import SinglePortfolioV4NoLink from "../../components/portfolio/SinglePortfolioV4NoLink";
 import ThemeDark from "../../components/switcher/ThemeDark";
 
 interface PortfolioItem {
@@ -41,30 +40,39 @@ const CategoryDetailsPage = () => {
             />
             
             <div className="portfolio-grid-area default-padding">
-                <div className="container">
+                <div className="container-full no-gap">
                     <div className="row">
                         <div className="col-lg-12">
-                            <div className="site-heading text-center" style={{ marginBottom: '50px' }}>
-                                <h2 className="title">{categoryTitle}</h2>
-                                <p>Explore our {categoryTitle.toLowerCase()} projects</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        {filteredProjects.length > 0 ? (
-                            filteredProjects.map(project => (
-                                <div key={project.id} className="col-lg-4 col-md-6 col-sm-12" style={{ marginBottom: '40px' }}>
-                                    <SinglePortfolioV4NoLink portfolio={project} />
+                            {filteredProjects.length > 0 ? (
+                                <div className="grid-gallery-style-two">
+                                    {filteredProjects.map((project, index) => (
+                                        <div 
+                                            key={project.id} 
+                                            className={`grid-item ${index % 2 === 0 ? 'grid-item-large' : ''}`}
+                                        >
+                                            <div className="portfolio-style-four">
+                                                <div className="thumb">
+                                                    <img 
+                                                        src={`/assets/img/portfolio/${project.thumb}`} 
+                                                        alt={project.title} 
+                                                        width={700} 
+                                                        height={600} 
+                                                    />
+                                                    <div className="content">
+                                                        <span>{project.tag}</span>
+                                                        <h2>{project.title}</h2>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))
-                        ) : (
-                            <div className="col-12">
-                                <p style={{ textAlign: 'center', padding: '40px', color: '#999' }}>
-                                    No projects found in the {categoryTitle} category.
-                                </p>
-                            </div>
-                        )}
+                            ) : (
+                                <div style={{ textAlign: 'center', padding: '60px 20px' }}>
+                                    <h3 style={{ color: '#999' }}>No projects found in the {categoryTitle} category.</h3>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
