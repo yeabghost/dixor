@@ -74,7 +74,7 @@ const BannerV4 = () => {
                                     <li>{data.date}</li>
                                 </ul>
                                 <h2>
-                                    <Link to={`/project-details/${data.id}`}>
+                                    <Link to={`/category/${data.tag}`}>
                                         {data.titleFirst}<strong>{data.titleLast}</strong>
                                     </Link>
                                 </h2>
