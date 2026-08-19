@@ -16,6 +16,7 @@ import ProjectPage from "./pages/innerPages/ProjectPage";
 import Project2Page from "./pages/innerPages/Project2Page";
 import Project3Page from "./pages/innerPages/Project3Page";
 import ProjectDetailsPage from "./pages/innerPages/ProjectDetailsPage";
+import CategoryDetailsPage from "./pages/innerPages/CategoryDetailsPage";
 import ContactUsPage from "./pages/innerPages/ContactUsPage";
 import FaqPage from "./pages/innerPages/FaqPage";
 
@@ -66,7 +67,6 @@ import Home5 from "./pages/innerPages/Home5";
 
 
 
-
 const Routers = () => {
     return (
         <>
@@ -87,6 +87,7 @@ const Routers = () => {
                 <Route path='/project-2' element={<Project2Page />}></Route>
                 <Route path='/project-3' element={<Project3Page />}></Route>
                 <Route path='/project-details/:id' element={<ProjectDetailsPage />}></Route>
+                <Route path='/category/:category' element={<CategoryDetailsPage />}></Route>
                 <Route path='/contact-us' element={<ContactUsPage />}></Route>
                 <Route path='/faq' element={<FaqPage />}></Route>
 
