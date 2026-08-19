@@ -4,7 +4,6 @@ import DarkClassV3 from "../../components/classes/DarkClassV3";
 import HeaderV5 from "../../components/header/HeaderV5";
 import ThemeDark from "../../components/switcher/ThemeDark";
 import DarkClass from "../../components/classes/DarkClass";
-import PortfolioV4Filtered from "../../components/portfolio/PortfolioV4Filtered";
 
 const Home5 = () => {
     return (
@@ -15,7 +14,6 @@ const Home5 = () => {
 
             <HeaderV5 />
             <BannerV4 />
-            <PortfolioV4Filtered hasTitle={true} />
             <DarkClassV3 />
             <DarkClass />
             <ThemeDark />
