@@ -10,4 +10,7 @@ export default defineConfig({
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"], // Ensure JSX is recognized
   },
+  server: {
+    allowedHosts: ['335e-196-189-89-250.ngrok-free.app']
+  }
 })

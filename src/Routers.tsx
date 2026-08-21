@@ -73,7 +73,6 @@ const Routers = () => {
             <Routes>
 
                 <Route path='/' element={<Home2 />}></Route>
-               
 
                 {/* Home Light  */}
                 <Route path='/home-2-light' element={<Home2Light />}></Route>

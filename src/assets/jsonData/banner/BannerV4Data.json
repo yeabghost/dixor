@@ -10,8 +10,8 @@
         {
             "id": 2,
             "title": "Quality pattern design solutions",
-            "thumbFirst": "18.jpg",
-            "thumbLast": "19.jpg",
+            "thumbFirst": "highschool-thumb.jpg",
+            "thumbLast": "roha-thumb.jpg",
             "thumbFull": "2-full.jpg"
         },
         {
@@ -24,8 +24,8 @@
         {
             "id": 4,
             "title": "Simple black & white design",
-            "thumbFirst": "22.jpg",
-            "thumbLast": "23.jpg",
+            "thumbFirst": "FF-vol-1-thumb.jpg",
+            "thumbLast": "FF-vol-3-commentary-thumb.jpg",
             "thumbFull": "4-full.jpg"
         },
         {
@@ -95,10 +95,10 @@
         },
         {
             "id": 2,
-            "tag": "Technology",
+            "tag": "Newspaper",
             "date": "18 October, 2024",
-            "titleFirst": "Moc",
-            "titleLast": "kup"
+            "titleFirst": "News",
+            "titleLast": "paper"
         },
         {
             "id": 3,
@@ -109,66 +109,45 @@
         },
         {
             "id": 4,
-            "tag": "Business",
+            "tag": "Magazine",
             "date": "18 October, 2024",
-            "titleFirst": "Stu",
-            "titleLast": "dio"
+            "titleFirst": "Maga",
+            "titleLast": "zine"
         },
         {
             "id": 5,
             "tag": "Marketing",
             "date": "18 October, 2024",
-            "titleFirst": "Mark",
-            "titleLast": "eting"
+            "titleFirst": "Motion",
+            "titleLast": " Graphics"
         },
         {
             "id": 6,
             "tag": "Technology",
             "date": "18 October, 2024",
-            "titleFirst": "Stra",
-            "titleLast": "tegy"
+            "titleFirst": "Video",
+            "titleLast": " Editing"
         },
         {
             "id": 7,
             "tag": "Branding",
             "date": "18 October, 2024",
-            "titleFirst": "Bran",
-            "titleLast": "ding"
+            "titleFirst": "Info",
+            "titleLast": "graphics"
         },
         {
             "id": 8,
             "tag": "Business",
             "date": "18 October, 2024",
-            "titleFirst": "Moc",
-            "titleLast": "kup"
+            "titleFirst": "Logo",
+            "titleLast": " Designs"
         },
         {
             "id": 9,
             "tag": "Creative",
             "date": "18 October, 2024",
-            "titleFirst": "Des",
-            "titleLast": "ign"
-        },
-        {
-            "id": 10,
-            "tag": "Design",
-            "date": "18 October, 2024",
-            "titleFirst": "Stu",
-            "titleLast": "dio"
-        },
-        {
-            "id": 11,
-            "tag": "Technology",
-            "date": "18 October, 2024",
-            "titleFirst": "Mark",
-            "titleLast": "eting"
-        },
-        {
-            "id": 12,
-            "tag": "Marketing",
-            "date": "18 October, 2024",
-            "titleFirst": "Stra",
-            "titleLast": "tegy"
+            "titleFirst": "Expl",
+            "titleLast": "ainers"
         }
     ]
 }

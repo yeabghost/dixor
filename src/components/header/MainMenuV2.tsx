@@ -16,7 +16,7 @@ const MainMenuV2 = ({ toggleSubMenu2, closeInfoBar }: DataType) => {
 
                 
                 <li><Link to="/services" onClick={closeInfoBar}>Services </Link></li>
-                <li><Link to="/about-us" onClick={closeInfoBar}>About</Link> </li>
+                <li><Link to="/portfolio" onClick={closeInfoBar}>Portfolio</Link> </li>
                 <li><Link to="/contact-us" onClick={closeInfoBar}>Contact</Link></li>
             </ul>
         </>
